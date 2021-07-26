@@ -67,13 +67,13 @@ export default function App() {
     <div className="App">
       <h1 className="heading">Cash Change Manager</h1>
       <h2>
-        Enter the bill amount and cash given by the customer and know minimum
-        number of notes to return.
+        Welcome 🤗 Enter Bill of the customer and Cash paid by the Customer to
+        find the change and minimum number of notes to return.
       </h2>
       <h1>
         Enter Bill:
         <br />
-        <input onChange={Enteredbill} />
+        <input type="number" onChange={Enteredbill} />
       </h1>
       <br />
       {click && Next ? null : <button onClick={CheckndNext}>next</button>}
@@ -82,7 +82,7 @@ export default function App() {
           <h1>
             Enter Cash:
             <br />
-            <input onChange={enteredCash} />
+            <input type="number" onChange={enteredCash} />
           </h1>
           <h1>
             <button onClick={CheckAmount}>Check</button>
@@ -102,32 +102,41 @@ export default function App() {
       ) : null}
       {showtable ? (
         <div>
-          <h1>Return Change:Rs{change}</h1>
+          <h1>Return Change:{change}</h1>
           <table>
             <tr>
               <th>No.of Notes</th>
               <th>Note</th>
             </tr>
-            <tr>
-              <td>
-                {Object.keys(list).map((item) => {
-                  if (list[item])
-                    return <div className="bored">{list[item]}</div>;
-                  else
-                    return (
-                      <div className="bored">
-                        <div style={{ visibility: "hidden" }}>{list[item]}</div>
-                      </div>
-                    );
-                })}
-              </td>
 
-              <td>
-                {note.map((item) => {
-                  return <div className="bored">{item}</div>;
-                })}
-              </td>
-            </tr>
+            {Object.keys(list).map((item) => {
+              if (list[item])
+                return (
+                  <tr>
+                    <td className="bored">{list[item]}</td>
+                    <td className="bored">{note[item]}</td>
+                  </tr>
+                );
+              else
+                return (
+                  <tr>
+                    <td className="bored">
+                      <div
+                        // className="rotate"
+                        style={{ visibility: "hidden" }}
+                      >
+                        {list[item]}
+                      </div>
+                    </td>
+
+                    <td className="bored">{note[item]}</td>
+                  </tr>
+                );
+            })}
+
+            {/* {note.map((item) => {
+                  return <td><div className="bored">{item}</div>;</td>
+                })} */}
           </table>
         </div>
       ) : null}
