@@ -1,2 +1,2 @@
 # mark10-CashChangeManager
-this React Js app returns the minimum number of notes to be given to the Customer 
+This file contains code for A React Js app that returns the minimum number of notes to be given to the Customer 
